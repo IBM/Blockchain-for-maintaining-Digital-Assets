@@ -1,0 +1,21 @@
+{
+    "channel_name": "mychannel",
+    "smart_contract_name": "blockchain-for-maintaining-digital-assets",
+    "connection_file": "local_fabric_connection.json",
+    "appAdmin": "app-admin",
+    "appAdminSecret": "app-adminpw",
+    "orgMSPID": "Org1MSP",
+    "caName": "ca.org1.example.com",
+    "peerName": "peer0.org1.example.com",
+    "ordererName": "orderer.example.com",
+    "gatewayDiscovery": { "enabled": true, "asLocalhost": true },
+    "smtpHost": "smtp.mailtrap.io",
+    "smtpPort": 2525,
+    "smtpUserName": "cb49e25f8bbe5f",
+    "smtpPassword": "3734c09cfda05f",
+    "senderEmail": "no-reply@digitalassetscodepattern.com",
+    "cos_endpoint": "s3.us.cloud-object-storage.appdomain.cloud",
+    "cos_apiKeyId": "QrC2rLBkjDmS755xR88_78seDgD2al8DIQxVd74G21Je",
+    "cos_serviceInstanceId": "crn:v1:bluemix:public:cloud-object-storage:global:a/86ac1b16b6f8b9629624a38d8edbd301:2f8d8505-46ff-46e9-a053-9d3e7121eedf::",
+    "cos_bucketName": "blockchain-digital-assets-bucket"
+ }
