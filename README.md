@@ -34,7 +34,7 @@ When you have completed this code pattern, you will understand how to:
 # Architecture flow
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/8854447/71943978-65ba9600-3190-11ea-8131-31efc0db87a7.jpg">
+  <img src="https://user-images.githubusercontent.com/8854447/72009715-7288c980-3224-11ea-9a85-30a4aac1f5eb.png">
 </p>
 
 1. The Blockchain Operator sets up the IBM Blockchain Platform service.
