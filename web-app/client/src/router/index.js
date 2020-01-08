@@ -7,6 +7,7 @@ import UploadAsset from '@/components/UploadAsset';
 import ViewAssetModificationRequests from '@/components/ViewAssetModificationRequests';
 import UpdateAsset from '@/components/UpdateAsset';
 import ChangeOwnershipOfAsset from '@/components/ChangeOwnershipOfAsset';
+import GetHistoryForDigitalAsset from '@/components/GetHistoryForDigitalAsset';
 
 Vue.use(Router);
 
@@ -45,6 +46,12 @@ export default new Router({
             path: '/changeOwnershipOfAsset',
             name: 'ChangeOwnershipOfAsset',
             component: ChangeOwnershipOfAsset,
+            props: true
+        },
+        {
+            path: '/getHistoryForDigitalAsset',
+            name: 'GetHistoryForDigitalAsset',
+            component: GetHistoryForDigitalAsset,
             props: true
         }
     ]

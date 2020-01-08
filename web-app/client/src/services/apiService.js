@@ -78,5 +78,10 @@ export default {
             assetId: assetId,
             assetName: assetName
         });
+    },
+    getHistoryForDigitalAsset(assetId){
+        return Api().post('getHistoryForDigitalAsset', {
+            assetId: assetId
+        });
     }
 };

@@ -137,4 +137,9 @@ app.post('/processAssetModRequest', async (req, res) => {
     res.send(response.toString());
 });
 
+app.post('/getHistoryForDigitalAsset', async (req, res) => {
+    let response = await network.getHistoryForDigitalAsset(req.body.assetId);
+    res.send(response.toString());
+});
+
 app.listen(process.env.PORT || 8081);

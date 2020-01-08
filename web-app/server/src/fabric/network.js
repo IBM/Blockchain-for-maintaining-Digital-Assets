@@ -128,7 +128,7 @@ exports.downloadFile = async function (assetId, assetName) {
 exports.connectToNetwork = async function (userName) {
     const gateway = new Gateway();
     try {
-        const walletPath = path.join(configPathPrefix, 'wallet');
+        const walletPath = path.join(configPathPrefix, '_idwallet');
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
@@ -653,6 +653,19 @@ exports.downloadDigitalAssetFile = async function (assetId, assetName){
     return;
 };
 
+exports.getHistoryForDigitalAsset = async function (assetId){
+    let response = {};
+    if(!assetId){
+        console.error('Error - no assetId found');
+        response.err = 'Error - no assetId found';
+    }
+    else{
+        let networkObj = await this.connectToNetwork(appAdmin);
+        response = await networkObj.contract.submitTransaction('getHistoryForDigitalAsset', assetId);
+    }
+    return response;
+};
+
 exports.registerUser = async function (emailAddress, firstName, lastName) {
 
     if (!emailAddress || !firstName || !lastName) {
@@ -664,7 +677,7 @@ exports.registerUser = async function (emailAddress, firstName, lastName) {
     try {
 
         // Create a new file system based wallet for managing identities.
-        const walletPath = path.join(configPathPrefix, 'wallet');
+        const walletPath = path.join(configPathPrefix, '_idwallet');
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
