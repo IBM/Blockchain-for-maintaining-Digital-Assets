@@ -1,6 +1,6 @@
 {
     "name": "blockchain-for-maintaining-digital-assets",
-    "version": "0.0.41",
+    "version": "0.0.1",
     "description": "Digital Assets Smart Contract",
     "main": "index.js",
     "engines": {
