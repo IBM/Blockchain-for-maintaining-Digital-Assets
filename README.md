@@ -49,7 +49,7 @@ When you have completed this code pattern, you will understand how to:
 *   [IBM Blockchain Platform](https://www.ibm.com/cloud/blockchain-platform) gives you total control of your blockchain network with a user interface that can simplify and accelerate your journey to deploy and manage blockchain components on the IBM Cloud Kubernetes Service.
 *   [IBM Cloud Kubernetes Service](https://www.ibm.com/cloud/container-service) creates a cluster of compute hosts and deploys highly available containers. A Kubernetes cluster lets you securely manage the resources that you need to quickly deploy, update, and scale applications.
 *   [IBM Blockchain Platform Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform) is designed to assist users in developing, testing, and deploying smart contracts - including connecting to Hyperledger Fabric environments.
-*   [IBM Cloud Object Storage](https://cloud.ibm.com/catalog/services/cloud-object-storage) is a highly scalable cloud storage service, designed for high durability, resiliency and security.
+*   [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) is a highly scalable cloud storage service, designed for high durability, resiliency and security.
 *   [Mailtrap.io](https://mailtrap.io) is a test mail server solution that allows testing email notifications without sending them to the real users of your application.
 
 
@@ -527,7 +527,7 @@ Main page of application:
   <img width="1000" src="https://user-images.githubusercontent.com/8854447/71941831-28063f00-3189-11ea-9f02-dfe2f78a6cbb.png">
 </div>
 
-You can have a look at the Introduction and Demo video under the [Watch the videos](#watch-the-videos) section for examples of actions that can be taken within the application.
+You can have a look at the [Introduction and Demo video](#watch-the-video---introduction-and-demo) for examples of actions that can be taken within the application.
 
 
 # Extending the code pattern
