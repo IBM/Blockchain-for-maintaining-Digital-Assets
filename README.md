@@ -34,19 +34,19 @@ When you have completed this code pattern, you will understand how to:
 # Architecture flow
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/8854447/71943978-65ba9600-3190-11ea-8131-31efc0db87a7.jpg">
+  <img src="https://user-images.githubusercontent.com/8854447/72009715-7288c980-3224-11ea-9a85-30a4aac1f5eb.png">
 </p>
 
-1. The Blockchain Operator sets up the IBM Blockchain Platform 2.0 service.
-2. The IBM Blockchain Platform 2.0 service creates a Hyperledger Fabric network on an IBM Kubernetes Service, and the Blockchain Operator installs and instantiates the smart contract on the network.
-3. The Node.js application server uses the Fabric SDK to interact with the deployed network on IBM Blockchain Platform 2.0, IBM Cloud Object Storage instance and the Mailtrap Server (fake SMTP testing server) and creates APIs for a web client.
+1. The Blockchain Operator sets up the IBM Blockchain Platform service.
+2. The IBM Blockchain Platform service creates a Hyperledger Fabric network on an IBM Kubernetes Service, and the Blockchain Operator installs and instantiates the smart contract on the network.
+3. The Node.js application server uses the Fabric SDK to interact with the deployed network on IBM Blockchain Platform, IBM Cloud Object Storage instance and the Mailtrap Server (fake SMTP testing server) and creates APIs for a web client.
 4. The Vue.js client uses the Node.js application API to interact with the network.
 5. The User interacts with the Vue.js web interface to interact with the digital asset management application.
 
 
 # Included components
 
-*   [IBM Blockchain Platform 2.0](https://www.ibm.com/cloud/blockchain-platform) gives you total control of your blockchain network with a user interface that can simplify and accelerate your journey to deploy and manage blockchain components on the IBM Cloud Kubernetes Service.
+*   [IBM Blockchain Platform](https://www.ibm.com/cloud/blockchain-platform) gives you total control of your blockchain network with a user interface that can simplify and accelerate your journey to deploy and manage blockchain components on the IBM Cloud Kubernetes Service.
 *   [IBM Cloud Kubernetes Service](https://www.ibm.com/cloud/container-service) creates a cluster of compute hosts and deploys highly available containers. A Kubernetes cluster lets you securely manage the resources that you need to quickly deploy, update, and scale applications.
 *   [IBM Blockchain Platform Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform) is designed to assist users in developing, testing, and deploying smart contracts - including connecting to Hyperledger Fabric environments.
 *   [IBM Cloud Object Storage](https://cloud.ibm.com/catalog/services/cloud-object-storage) is a highly scalable cloud storage service, designed for high durability, resiliency and security.
@@ -119,7 +119,7 @@ We will use the IBM Blockchain Platform extension on VS Code to package the smar
 
 * Next, right click on the packaged contract (in this case, select blockchain-for-maintaining-digital-assets@0.0.1) to export it and choose `Export Package`.
 
-* Choose a location on your machine and save the `.cds` file. We will use this packaged smart contract later to deploy on the IBM Blockchain Platform 2.0 service.
+* Choose a location on your machine and save the `.cds` file. We will use this packaged smart contract later to deploy on the IBM Blockchain Platform service.
 
 Now, we will start setting up the different services required for configuring our Hyperledger Fabric network on the IBM Cloud and for running our application using this network.
 
@@ -151,7 +151,7 @@ Now, we will start setting up the different services required for configuring ou
 </p>
 <br>
 
-* Create the [IBM Blockchain Platform 2.0](https://cloud.ibm.com/catalog/services/blockchain-platform) service on the IBM Cloud. You can find the service in the `Catalog`, and give it a name.
+* Create the [IBM Blockchain Platform](https://cloud.ibm.com/catalog/services/blockchain-platform) service on the IBM Cloud. You can find the service in the `Catalog`, and give it a name.
 
 <br>
 <p align="center">
