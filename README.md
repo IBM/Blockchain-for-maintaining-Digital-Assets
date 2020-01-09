@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sandhya-nayak/Blockchain-for-maintaining-Digital-Assets.svg?branch=master)](https://travis-ci.org/sandhya-nayak/Blockchain-for-maintaining-Digital-Assets)
+[![Build Status](https://travis-ci.org/IBM/Blockchain-for-maintaining-Digital-Assets.svg?branch=master)](https://travis-ci.org/IBM/Blockchain-for-maintaining-Digital-Assets)
 
 # Blockchain for maintaining Digital Assets
 
@@ -68,9 +68,14 @@ When you have completed this code pattern, you will understand how to:
 * [IBM Blockchain Platform Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform)
 
 
-# Watch the videos
+# Watch the video - Introduction and Demo
 
-TODO
+[![](https://user-images.githubusercontent.com/8854447/72086129-6eb48000-32d4-11ea-8869-d6362dd7556a.png)](https://youtu.be/tfnRfDFWHUc)
+
+
+# Watch the video - Setup blockchain network
+
+[![](https://user-images.githubusercontent.com/8854447/72086127-6eb48000-32d4-11ea-9036-b2cfe4b10af6.png)](https://youtu.be/jWizAUhSj1Y)
 
 
 # Running the application
@@ -94,7 +99,7 @@ Follow these steps to set up and run this code pattern. The steps are described 
 Clone this repository in a folder your choice:
 
 ```
-git clone https://github.com/sandhya-nayak/Blockchain-for-maintaining-Digital-Assets.git
+git clone https://github.com/IBM/Blockchain-for-maintaining-Digital-Assets.git
 ```
 
 
