@@ -549,7 +549,7 @@ exports.processAssetModRequest = async function (networkObj, assetId, assetModId
                         console.log(`Inside event hub code - The Digital Asset modification request for ${assetId} was successfully processed.`);
                         // obtain the assetModifier's email address
                         let eventPayload = JSON.parse(event.payload.toString());
-                        let assetModifier = eventPayload.lastModifiedBy;
+                        let assetModifier = modificationPendingApproval.lastModifiedBy;
                         let modifiedTimestamp = new Date(eventPayload.modifiedTimestamp).toLocaleString();
                         let transporter = nodemailer.createTransport({
                             host: smtpHost,

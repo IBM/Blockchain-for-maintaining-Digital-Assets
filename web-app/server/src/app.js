@@ -37,8 +37,8 @@ app.post('/registerUser', async (req, res) => {
             res.send(invokeResponse.err);
         }
         else {
-            invokeResponse += ' Use emailAddress to login above.';
-            res.send(invokeResponse);
+            let registerResponse = JSON.parse(invokeResponse).data + ' Use emailAddress to login above.';
+            res.send(registerResponse);
         }
     }
 });

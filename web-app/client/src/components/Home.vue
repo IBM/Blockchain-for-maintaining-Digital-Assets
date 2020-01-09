@@ -82,7 +82,7 @@ export default {
           this.loginData.emailAddress
         );
         if (apiResponse.data.err) {
-          this.loginReponse = apiResponse.data.err;
+          this.loginReponse.data = apiResponse.data.err;
         } 
         else if (this.$route.params.reroute){
           this.$router.push({ name: this.$route.params.reroute, params: { emailaddress: this.loginData.emailAddress}});
@@ -90,7 +90,6 @@ export default {
           const apiResponse = await PostsService.queryAllDigitalAssets(this.loginData.emailAddress);
           this.$router.push({ name: 'ShowAllDigitalAssets', params: { emailaddress: this.loginData.emailAddress, apiresponse: apiResponse.data, tableheading: "Digital Assets"}});
         }
-        this.loginReponse = apiResponse;
         await this.hideSpinner();
       }
     },
