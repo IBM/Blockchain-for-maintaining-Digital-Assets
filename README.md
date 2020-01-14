@@ -38,7 +38,7 @@ When you have completed this code pattern, you will understand how to:
 </p>
 
 1. The Blockchain Operator sets up the IBM Blockchain Platform service.
-2. The IBM Blockchain Platform service creates a Hyperledger Fabric network on an IBM Kubernetes Service, and the Blockchain Operator installs and instantiates the smart contract on the network.
+2. The IBM Blockchain Platform service creates a Hyperledger Fabric network on an IBM Cloud Kubernetes Service, and the Blockchain Operator installs and instantiates the smart contract on the network.
 3. The Node.js application server uses the Fabric SDK to interact with the deployed network on IBM Blockchain Platform, IBM Cloud Object Storage instance and the Mailtrap Server (fake SMTP testing server) and creates APIs for a web client.
 4. The Vue.js client uses the Node.js application API to interact with the network.
 5. The User interacts with the Vue.js web interface to interact with the digital asset management application.
@@ -140,7 +140,7 @@ Now, we will start setting up the different services required for configuring ou
 
 ### 4. Create IBM Cloud services
 
-* Create the [IBM Cloud Kubernetes Service](https://cloud.ibm.com/kubernetes/catalog/cluster). You can find the service in the `Catalog`. For this code pattern, we can use the `Free` cluster, and give it a name. Note, that the IBM Cloud allows one instance of a free cluster which expires after 30 days. **Note: it could take 20 minutes for the Kubernetes Service setup to complete**.
+* Create the [IBM Cloud Kubernetes Service](https://cloud.ibm.com/kubernetes/catalog/cluster). You can find the service in the `Catalog`. For this code pattern, we can use the `Free` cluster, and give it a name. Note, that the IBM Cloud allows one instance of a free cluster which expires after 30 days. **Note: it could take 20 minutes for the IBM Cloud Kubernetes Service setup to complete**.
 
 <br>
 <p align="center">
@@ -164,7 +164,7 @@ Now, we will start setting up the different services required for configuring ou
 </p>
 <br>
 
-* After your kubernetes cluster is up and running, you can deploy your IBM Blockchain Platform on the cluster. Again - wait for the Kubernetes service to indicate it was deployed. The IBM Blockchain Platform service walks through few steps and finds your cluster on the IBM Cloud to deploy the service on.
+* After your kubernetes cluster is up and running, you can deploy your IBM Blockchain Platform on the cluster. Again - wait for the IBM Cloud Kubernetes service to indicate it was deployed. The IBM Blockchain Platform service walks through few steps and finds your cluster on the IBM Cloud to deploy the service on.
 
 <br>
 <p align="center">
