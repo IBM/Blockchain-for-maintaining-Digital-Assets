@@ -70,10 +70,14 @@ When you have completed this code pattern, you will understand how to:
 
 # Watch the video - Introduction and Demo
 
+**Note: Click on the image below to view the video on YouTube. For Google Chrome, press the Ctrl key + the left mouse button and say `Open link`.**
+
 [![](https://user-images.githubusercontent.com/8854447/72086129-6eb48000-32d4-11ea-8869-d6362dd7556a.png)](https://youtu.be/tfnRfDFWHUc)
 
 
 # Watch the video - Setup blockchain network
+
+**Note: Click on the image below to view the video on YouTube. For Google Chrome, press the Ctrl key + the left mouse button and say `Open link`.**
 
 [![](https://user-images.githubusercontent.com/8854447/72086127-6eb48000-32d4-11ea-9036-b2cfe4b10af6.png)](https://youtu.be/jWizAUhSj1Y)
 
