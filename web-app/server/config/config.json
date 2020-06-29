@@ -7,7 +7,6 @@
     "orgMSPID": "Org1MSP",
     "caName": "ca.org1.example.com",
     "peerName": "peer0.org1.example.com",
-    "ordererName": "orderer.example.com",
     "gatewayDiscovery": { "enabled": true, "asLocalhost": true },
     "smtpHost": "smtp.mailtrap.io",
     "smtpPort": 2525,
