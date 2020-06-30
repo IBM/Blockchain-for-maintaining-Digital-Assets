@@ -13,14 +13,14 @@
     "cors": "^2.8.5",
     "eslint": "^6.8.0",
     "express": "^4.17.1",
-    "fabric-ca-client": "~1.4.2",
-    "fabric-network": "~1.4.2",
-    "hasha": "^5.1.0",
-    "ibm-cos-sdk": "^1.6.0",
-    "morgan": "^1.9.1",
-    "nodemailer": "^6.4.2",
-    "nodemon": "^2.0.2",
-    "uuid": "^3.3.3"
+    "fabric-ca-client": "^1.4.9",
+    "fabric-network": "^1.4.9",
+    "hasha": "^5.2.0",
+    "ibm-cos-sdk": "^1.6.1",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.10",
+    "nodemon": "^2.0.4",
+    "uuid": "^3.4.0"
   },
   "repository": {
     "type": "git",
