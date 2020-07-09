@@ -2,6 +2,8 @@
 
 # Blockchain for maintaining Digital Assets
 
+> **NOTE**: This developer pattern creates a blockchain network on *IBM Blockchain Platform version **2.5*** using the *Hyperledger Fabric version **1.4***.
+
 In this code pattern, we will be building a digital asset management application by creating and deploying a smart contract on a Hyperledger Fabric Network created on IBM Blockchain Platform. We will then interact with this application via a user interface created using VueJS.
 
 Digital Asset Management Systems ensure that operations are only performed on a digital asset by individuals (or organizations) that have the right access rights and permissions for the asset. The digital asset is defined as the content (an image, a music file, a document, a video file, etc.) and its metadata. The metadata could be as simple as the name of the asset, the name of the owner of the asset and the date of creation of the asset, or it could be something more complex, such as extracted speech from a video (subtitles). In any Digital Asset Management system, there can be any number of users and these users can have the ability to perform various actions on the asset in the system based on the permissions they have. Examples of such actions that are being covered in this developer pattern are:
@@ -63,7 +65,7 @@ When you have completed this code pattern, you will understand how to:
 ## Prerequisites
 
 * [IBM Cloud account](https://cloud.ibm.com/registration/?target=%2Fdashboard%2Fapps)
-* [Node v8.x or v10.x and npm v6.x or greater](https://nodejs.org/en/download/)
+* [Node v10.x and npm v6.x or greater](https://nodejs.org/en/download/)
 * [VSCode version 1.38.0 or greater](https://code.visualstudio.com)
 * [IBM Blockchain Platform Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform)
 
@@ -237,13 +239,13 @@ We will build a network as provided by the IBM Blockchain Platform [documentatio
   - Navigate to the <b>Nodes</b> tab in the left navigation and click <b>Add peer +</b>.
   - Click <b>Create a peer +</b> and then click <b>Next</b>.
   - Give the <b>Peer display name</b> as `Peer Org1` and click <b>Next</b>.
-  - On the next screen, select `Org1 CA` as the <b>Certificate Authority</b>. Then, give the <b>Peer enroll ID</b> and <b>Peer enroll secret</b> as `peer1` and `peer1pw` respectively. Select the <b>Organization MSP</b> as `Org1MSP`. Leave the <b>TLS CSR hostname</b> blank and select the highest value available in the drop-down for <b>Fabric version</b>, i.e. `2.1.1-0`. Click <b>Next</b>.
+  - On the next screen, select `Org1 CA` as the <b>Certificate Authority</b>. Then, give the <b>Peer enroll ID</b> and <b>Peer enroll secret</b> as `peer1` and `peer1pw` respectively. Select the <b>Organization MSP</b> as `Org1MSP`. Leave the <b>TLS CSR hostname</b> blank and select `1.4.7-0` in the drop-down for <b>Fabric version</b>. Click <b>Next</b>.
   - Provide `Org1 Admin` as the <b>Peer administrator identity</b> and click <b>Next</b>.
   - Review the summary and click <b>Add peer</b>.
 
 <br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/8854447/85802117-41d51780-b712-11ea-80b1-06710ec3207d.gif">
+  <img src="https://user-images.githubusercontent.com/8854447/86380230-e0ed9800-bc59-11ea-9440-50e0ca1921cd.gif">
 </p>
 <br>
 
@@ -308,13 +310,13 @@ We will build a network as provided by the IBM Blockchain Platform [documentatio
   - Navigate to the <b>Nodes</b> tab in the left navigation and click <b>Add ordering service +</b>.
   - Click <b>Create an ordering service +</b> and then click <b>Next</b>.
   - Give the <b>Ordering service display name</b> as `Orderer` and click <b>Next</b>.
-  - On the next screen, select `Orderer CA` as the <b>Certificate Authority</b>. Then, give the <b>Ordering service enroll ID</b> and <b>Ordering service enroll secret</b> as `orderer` and `ordererpw` respectively. Select the <b>Organization MSP</b> as `OrdererMSP`. Leave the <b>TLS CSR hostname</b> blank and select the highest value available in the drop-down for <b>Fabric version</b>, i.e. `2.1.1-0`. Click <b>Next</b>.
+  - On the next screen, select `Orderer CA` as the <b>Certificate Authority</b>. Then, give the <b>Ordering service enroll ID</b> and <b>Ordering service enroll secret</b> as `orderer` and `ordererpw` respectively. Select the <b>Organization MSP</b> as `OrdererMSP`. Leave the <b>TLS CSR hostname</b> blank and select `1.4.7-0` in the drop-down for <b>Fabric version</b>. Click <b>Next</b>.
   - Provide `Orderer Admin` as the <b>Orderer administrator identity</b> and click <b>Next</b>.
   - Review the summary and click <b>Add ordering service</b>.
 
 <br>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/8854447/85803547-5ff04700-b715-11ea-934f-943ffe0439b0.gif">
+  <img src="https://user-images.githubusercontent.com/8854447/86392493-8c521900-bc69-11ea-9a7f-544bfadfb34e.gif">
 </p>
 <br>
 
@@ -349,7 +351,7 @@ We will build a network as provided by the IBM Blockchain Platform [documentatio
 
 
 #### Join your peer to the channel
-  - Click on the newly crated channel <b>mychannel</b>.
+  - Click on the newly created channel <b>mychannel</b>.
   - In the side panel that opens, under <b>Choose from available peers</b>, select `Peer Org1`. Once the peer is selected, a check mark will be displayed next to it. Ensure that <b>Make anchor peer(s)</b> is marked as `Yes`. Click <b>Join channel</b>.
 
 <br>
