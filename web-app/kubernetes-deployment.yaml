@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: digitalasset-server-deployment
+  labels:
+    app: digitalasset-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: digitalasset-server
+  template:
+    metadata:
+      labels:
+        app: digitalasset-server
+    spec:
+      containers:
+      - name: server
+        image: us.icr.io/digitalasset/digitalasset  
+        ports:
+        - containerPort: 8081
+        command: ["sh"]
+        args: ["-c", "cd server && npm i && node enrollAdmin.js && npm start"]
+        volumeMounts:
+        - name: config
+          mountPath: "/app/server/config/"
+      volumes:
+      - name: config
+        configMap:
+          name: configuration
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: digitalasset-client-deployment
+  labels:
+    app: digitalasset-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: digitalasset-client
+  template:
+    metadata:
+      labels:
+        app: digitalasset-client
+    spec:
+      containers:
+      - name: client
+        image: us.icr.io/digitalasset/digitalasset  
+        ports:
+        - containerPort: 80
+        command: ["sh"]
+        args: ["-c", "cd client && npm i && npm run serve"]
