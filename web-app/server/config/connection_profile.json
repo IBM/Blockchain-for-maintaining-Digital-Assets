@@ -1,0 +1,44 @@
+{
+    "name": "Org7MSPprofile",
+    "description": "Network on IBP v2",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Org7MSP"
+    },
+    "organizations": {
+        "Org7MSP": {
+            "mspid": "Org7MSP",
+            "certificateAuthorities": [
+                "n13628f-org7ca.distributedorderer-1abd866a65a6a73350903823fc77cd5f-0000.jp-tok.containers.appdomain.cloud:7054"
+            ],
+            "peers": [
+                "n13628f-org7peer1.distributedorderer-1abd866a65a6a73350903823fc77cd5f-0000.jp-tok.containers.appdomain.cloud:7051"
+            ]
+        }
+    },
+    "peers": {
+        "n13628f-org7peer1.distributedorderer-1abd866a65a6a73350903823fc77cd5f-0000.jp-tok.containers.appdomain.cloud:7051": {
+            "url": "grpcs://n13628f-org7peer1.distributedorderer-1abd866a65a6a73350903823fc77cd5f-0000.jp-tok.containers.appdomain.cloud:7051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIIB/TCCAaSgAwIBAgIUCzd8yO1Zpb92MGrRnf8D2j5pRf8wCgYIKoZIzj0EAwIw\nXTELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMQ4wDAYDVQQDEwV0bHNjYTAe\nFw0yMDA0MDYyMDQzMDBaFw0zNTA0MDMyMDQzMDBaMF0xCzAJBgNVBAYTAlVTMRcw\nFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEUMBIGA1UEChMLSHlwZXJsZWRnZXIxDzAN\nBgNVBAsTBkZhYnJpYzEOMAwGA1UEAxMFdGxzY2EwWTATBgcqhkjOPQIBBggqhkjO\nPQMBBwNCAASfaiuKUlA5Up9vpZIOGA3k8MljrnZl1tQ8Jc/6UTT43zT7qi35clU1\nj1A7Z3ZL//tX/0lpsNkPc2BCDQYmtu+jo0IwQDAOBgNVHQ8BAf8EBAMCAQYwDwYD\nVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQU6iaHA3vHxUgvTY/VaR8XqY3DBLEwCgYI\nKoZIzj0EAwIDRwAwRAIgOsOdY/ahCYrygmZsip5GZ/pHCBrEwoDFsvyRfECkc08C\nIHS562voAz7Y5LbdpP9JKPnhKUTP8NyrkpVB745ifuto\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "n13628f-org7peer1.distributedorderer-1abd866a65a6a73350903823fc77cd5f-0000.jp-tok.containers.appdomain.cloud"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "n13628f-org7ca.distributedorderer-1abd866a65a6a73350903823fc77cd5f-0000.jp-tok.containers.appdomain.cloud:7054": {
+            "url": "https://n13628f-org7ca.distributedorderer-1abd866a65a6a73350903823fc77cd5f-0000.jp-tok.containers.appdomain.cloud:7054",
+            "caName": "ca",
+            "tlsCACerts": {
+                "pem": [
+                    "-----BEGIN CERTIFICATE-----\nMIIDFjCCArugAwIBAgIRAOQhl2x8S05mLKebZXEdXnswCgYIKoZIzj0EAwIwgc4x\nCzAJBgNVBAYTAlVTMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEPMA0GA1UEBxMG\nRHVyaGFtMQwwCgYDVQQKEwNJQk0xEzARBgNVBAsTCkJsb2NrY2hhaW4xcjBwBgNV\nBAMTaW4xMzYyOGYtb3JnN2NhLmRpc3RyaWJ1dGVkb3JkZXJlci0xYWJkODY2YTY1\nYTZhNzMzNTA5MDM4MjNmYzc3Y2Q1Zi0wMDAwLmpwLXRvay5jb250YWluZXJzLmFw\ncGRvbWFpbi5jbG91ZDAeFw0yMDA0MDYyMDQ3NDJaFw0zMDA0MDQyMDQ3NDJaMIHO\nMQswCQYDVQQGEwJVUzEXMBUGA1UECBMOTm9ydGggQ2Fyb2xpbmExDzANBgNVBAcT\nBkR1cmhhbTEMMAoGA1UEChMDSUJNMRMwEQYDVQQLEwpCbG9ja2NoYWluMXIwcAYD\nVQQDE2luMTM2MjhmLW9yZzdjYS5kaXN0cmlidXRlZG9yZGVyZXItMWFiZDg2NmE2\nNWE2YTczMzUwOTAzODIzZmM3N2NkNWYtMDAwMC5qcC10b2suY29udGFpbmVycy5h\ncHBkb21haW4uY2xvdWQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQbnuxK1Os3\nzgDjF3iUjolLcUh9ZwDwnhld5dpFgJBrVA6TnYD/729ss5xA4IOufhkqlC5vcuOx\nCiqkAtDWm9Mwo3gwdjB0BgNVHREEbTBrgmluMTM2MjhmLW9yZzdjYS5kaXN0cmli\ndXRlZG9yZGVyZXItMWFiZDg2NmE2NWE2YTczMzUwOTAzODIzZmM3N2NkNWYtMDAw\nMC5qcC10b2suY29udGFpbmVycy5hcHBkb21haW4uY2xvdWQwCgYIKoZIzj0EAwID\nSQAwRgIhAId2Okd9fKsVKHnsglKZikbEC9YKhY9IQ+n/gaeyW84dAiEAuJhsckYU\ntuYQuE1lt4ovqQme7wnXGEycZiC/Ry0/H24=\n-----END CERTIFICATE-----\n"
+                ]
+            },
+            "httpOptions": {
+               "verify": false
+            }
+        }
+    }
+}
