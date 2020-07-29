@@ -15,8 +15,9 @@ spec:
         app: digitalasset-server
     spec:
       containers:
-      - name: server
+      - name: digitalassetserver
         image: us.icr.io/digitalasset/digitalasset  
+        imagePullPolicy: Always
         ports:
         - containerPort: 8081
         command: ["sh"]
@@ -24,6 +25,8 @@ spec:
         volumeMounts:
         - name: config
           mountPath: "/app/server/config/"
+      imagePullSecrets:
+      - name: digitalassets-us-icr-io
       volumes:
       - name: config
         configMap:
@@ -46,9 +49,41 @@ spec:
         app: digitalasset-client
     spec:
       containers:
-      - name: client
-        image: us.icr.io/digitalasset/digitalasset  
+      - name: digitalassetclient
+        image: us.icr.io/digitalasset/digitalasset
+        imagePullPolicy: Always 
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         command: ["sh"]
         args: ["-c", "cd client && npm i && npm run serve"]
+      imagePullSecrets:
+      - name: digitalassets-us-icr-io
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: digitalasset-server-service
+spec:
+  selector:
+    app: digitalasset-server
+  ports:
+    - protocol: TCP
+      port: 8081
+      nodePort: 30002
+      targetPort: 8081
+  type: NodePort  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: digitalasset-client-service
+spec:
+  selector:
+    app:  digitalasset-client
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30001
+      targetPort: 8080
+  type: NodePort      
+

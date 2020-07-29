@@ -11,6 +11,7 @@ const hasha = require('hasha');
 
 //connect to the config file
 const configPathPrefix = path.join(process.cwd(), 'config');
+const walletPathPrefix = path.join(process.cwd(), '_idwallet');
 const configPath = path.join(configPathPrefix, 'config.json');
 const configJSON = fs.readFileSync(configPath, 'utf8');
 const config = JSON.parse(configJSON);
@@ -128,7 +129,7 @@ exports.downloadFile = async function (assetId, assetName) {
 exports.connectToNetwork = async function (userName) {
     const gateway = new Gateway();
     try {
-        const walletPath = path.join(configPathPrefix, '_idwallet');
+        const walletPath = path.join(walletPathPrefix);
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
@@ -677,7 +678,7 @@ exports.registerUser = async function (emailAddress, firstName, lastName) {
     try {
 
         // Create a new file system based wallet for managing identities.
-        const walletPath = path.join(configPathPrefix, '_idwallet');
+        const walletPath = path.join(walletPathPrefix);
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
