@@ -109,7 +109,7 @@ exports.downloadFile = async function (assetId, assetName) {
         Bucket: bucketName,
         Key: assetId
     };
-    cos.getObject(params, (err, data) => {
+    return cos.getObject(params, (err, data) => {
         if (err) {
             let response = {};
             response.err = `ERROR - Item could not be created in COS: ${err.code} - ${err.message}\n`;
@@ -119,9 +119,9 @@ exports.downloadFile = async function (assetId, assetName) {
         let regex = /^data:(.+);base64,(.*)$/;
         let matches = (data.Body.toString()).match(regex);
         let fileData = matches[2];
-
-        let buffer = Buffer.from(fileData, 'base64');
-        fs.writeFileSync('../client/downloads/' + assetName, buffer);
+        return fileData;
+        // let buffer = Buffer.from(fileData, 'base64');
+        // fs.writeFileSync('../client/downloads/' + assetName, buffer);
     });
 };
 
