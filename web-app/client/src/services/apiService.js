@@ -1,5 +1,7 @@
 import Api from '@/services/api';
 
+
+
 export default {
     registerUser(emailAddress, firstName, lastName) {
         return Api().post('registerUser', {
@@ -74,10 +76,24 @@ export default {
         });
     },
     downloadDigitalAssetFile(assetId, assetName) {
-        return Api().post('downloadDigitalAssetFile', {
-            assetId: assetId,
-            assetName: assetName
+        let fileData =  Api().post('downloadDigitalAssetFile', {
+             assetId: assetId,
+             assetName: assetName
         });
+        
+        console.log('barry about to write file');
+        console.log(fileData);
+        const blob = new Blob([fileData], { type: 'application/octet-stream' })
+        const link = document.createElement('a')
+        link.href = URL.createObjectURL(blob)
+        link.download = assetName
+        link.click()
+        URL.revokeObjectURL(link.href)
+
+        console.log('barry returning from write file');  
+        //end barry hack
+        //fs.writeFileSync('../client/downloads/' + assetName, buffer);
+    
     },
     getHistoryForDigitalAsset(assetId){
         return Api().post('getHistoryForDigitalAsset', {
