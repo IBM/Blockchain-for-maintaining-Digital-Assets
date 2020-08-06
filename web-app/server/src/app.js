@@ -113,6 +113,10 @@ app.post('/downloadDigitalAssetFile', async(req, res) => {
     let buffer = Buffer.from(response.Body).toString();
 
     let base64Data = buffer.replace(/^data:image\/(png|gif|jpeg);base64,/, '');
+    let dir = __dirname + '/files/';
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
     const file = __dirname + '/files/' + req.body.assetName;
     require('fs').writeFile(file, base64Data, 'base64', function(err) {
         console.log(err);
