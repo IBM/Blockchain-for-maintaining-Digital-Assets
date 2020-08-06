@@ -76,26 +76,43 @@ export default {
         });
     },
     downloadDigitalAssetFile(assetId, assetName) {
-        let fileData =  Api().post('downloadDigitalAssetFile', {
-             assetId: assetId,
-             assetName: assetName
-        });
-        
-        console.log('barry about to write file');
-        console.log(fileData);
-        const blob = new Blob([fileData], { type: 'application/octet-stream' })
-        const link = document.createElement('a')
-        link.href = URL.createObjectURL(blob)
-        link.download = assetName
-        link.click()
-        URL.revokeObjectURL(link.href)
+        Api().post('downloadDigitalAssetFile', {
+                assetId: assetId,
+                assetName: assetName
+            }).then(function(response) {
 
-        console.log('barry returning from write file');  
-        //end barry hack
-        //fs.writeFileSync('../client/downloads/' + assetName, buffer);
-    
+                console.log('barry about to write file');
+                console.log(response);
+                // eslint-disable-next-line no-undef
+                let contentType = response.data.Body.ContentType;
+                let data = response.data.Body.data;
+                let base64 = data.toString('base64');
+                const blob = new Blob([base64], { type: contentType });
+                // eslint-disable-next-line no-undef
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = assetName;
+                link.click();
+                URL.revokeObjectURL(link.href);
+
+                console.log('barry returning from write file');
+                //end barry hack
+                //fs.writeFileSync('../client/downloads/' + assetName, buffer);
+
+
+
+                console.log(response);
+
+
+
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+
     },
-    getHistoryForDigitalAsset(assetId){
+    getHistoryForDigitalAsset(assetId) {
         return Api().post('getHistoryForDigitalAsset', {
             assetId: assetId
         });
