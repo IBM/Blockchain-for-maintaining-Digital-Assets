@@ -50,7 +50,10 @@ exports.putObject = async function(assetId, fileContents, mimetype) {
             Bucket: bucketName,
             Key: assetId,
             Body: fileContents,
+<<<<<<< HEAD
             ContentEncoding: 'base64',
+=======
+>>>>>>> c8fdeea20b090e1bfbe8ded1e45cbbbb03dfa15b
             ContentType: mimetype
         }).promise()
         .then((() => {
