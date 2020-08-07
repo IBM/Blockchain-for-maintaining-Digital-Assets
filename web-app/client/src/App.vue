@@ -1,6 +1,6 @@
 <template>
   <div id="app" style="width: 1000px; height: 1000px;">
-    <img alt="Vue logo" src="./assets/logo.png" width="50%" height="50%">    
+    <img alt="Vue logo" src="./assets/logo.png" width="10%" height="10%">    
       <h4 v-if=$route.params.emailaddress>Logged in as {{$route.params.emailaddress}}.
       <router-link to="/">Logout?</router-link>&nbsp;</h4>
       <router-view></router-view>
