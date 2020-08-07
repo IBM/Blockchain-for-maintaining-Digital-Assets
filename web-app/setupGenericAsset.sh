@@ -85,7 +85,7 @@ kubectl apply -f kubernetes-deployment.yaml
 
 
 #while true; do
-    kubectl apply -f kubernetes-deployment.yaml
+#    kubectl apply -f kubernetes-deployment.yaml
 ##    EC=$?
 #    if [ $EC -eq 0 ]; then
 #        echo "deployment successful"
