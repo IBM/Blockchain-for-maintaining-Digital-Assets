@@ -98,4 +98,4 @@ kubectl apply -f kubernetes-deployment.yaml
 echo "Applications modifications successful"
 
 open http://52.117.161.89:30005/#/
-exit
+
