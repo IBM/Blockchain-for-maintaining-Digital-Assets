@@ -11,9 +11,11 @@ const app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(cors());
+let router = express.Router();
+app.use('/das', router);
 
 //get user info, create user object, and update state with their emailAddress
-app.post('/registerUser', async (req, res) => {
+router.post('/registerUser', async (req, res) => {
     //first create the identity for the user and add to wallet
     let response = await network.registerUser(req.body.emailAddress, req.body.firstName, req.body.lastName);
     if (response.err) {
@@ -43,7 +45,7 @@ app.post('/registerUser', async (req, res) => {
     }
 });
 
-app.post('/validateUser', async (req, res) => {
+router.post('/validateUser', async (req, res) => {
     let networkObj = await network.connectToNetwork(req.body.emailAddress);
     if (networkObj.err) {
         res.send(networkObj);
@@ -59,8 +61,7 @@ app.post('/validateUser', async (req, res) => {
 });
 
 //get all assets in world state
-app.post('/queryAllDigitalAssets', async (req, res) => {
-
+router.post('/queryAllDigitalAssets', async (req, res) => {
     let networkObj = await network.connectToNetwork(req.body.emailAddress);
     let response = await network.queryAllDigitalAssets(networkObj, req.body.emailAddress);
     let parsedResponse = await JSON.parse(response);
@@ -69,7 +70,7 @@ app.post('/queryAllDigitalAssets', async (req, res) => {
 });
 
 //get all assets owned by a particular user
-app.post('/queryDigitalAssetsByUser', async (req, res) => {
+router.post('/queryDigitalAssetsByUser', async (req, res) => {
 
     let networkObj = await network.connectToNetwork(req.body.emailAddress);
     let response = await network.queryDigitalAssetsByUser(networkObj, req.body.emailAddress);
@@ -79,7 +80,7 @@ app.post('/queryDigitalAssetsByUser', async (req, res) => {
 });
 
 //get asset by assetId
-app.post('/readDigitalAsset', async (req, res) => {
+router.post('/readDigitalAsset', async (req, res) => {
 
     let networkObj = await network.connectToNetwork(req.body.emailAddress);
     let response = await network.readDigitalAsset(networkObj, req.body.assetId);
@@ -89,7 +90,7 @@ app.post('/readDigitalAsset', async (req, res) => {
 });
 
 //create/upload a new asset
-app.post('/createDigitalAsset', async (req, res) => {
+router.post('/createDigitalAsset', async (req, res) => {
     let networkObj = await network.connectToNetwork(req.body.emailAddress);
     let response = await network.createDigitalAsset(networkObj, req.body.digitalAssetFileName, req.body.digitalAssetFileType, req.body.digitalAssetFileBuffer, req.body.emailAddress);
     res.send(response);
@@ -97,49 +98,56 @@ app.post('/createDigitalAsset', async (req, res) => {
 });
 
 //view all pending asset modification requests
-app.post('/viewAssetModificationRequests', async (req, res) => {
+router.post('/viewAssetModificationRequests', async (req, res) => {
     let networkObj = await network.connectToNetwork(req.body.emailAddress);
     let response = await network.viewAssetModificationRequests(networkObj, req.body.emailAddress);
     res.send(response.toString());
 });
 
 //download an asset from COS
-app.post('/downloadDigitalAssetFile', async (req, res) => {
+router.post('/downloadDigitalAssetFile', async (req, res) => {
     let response = await network.downloadDigitalAssetFile(req.body.assetId, req.body.assetName);
     res.send(response);
 });
 
 //delete an asset (from COS + ledger)
-app.post('/deleteDigitalAsset', async (req, res) => {
+router.post('/deleteDigitalAsset', async (req, res) => {
     let networkObj = await network.connectToNetwork(req.body.emailAddress);
     let response = await network.deleteDigitalAsset(networkObj, req.body.assetId, req.body.emailAddress);
     res.send(response);
 });
 
 //update an existing asset (replacing the file)
-app.post('/updateDigitalAsset', async (req, res) => {
+router.post('/updateDigitalAsset', async (req, res) => {
     let networkObj = await network.connectToNetwork(req.body.emailAddress);
     let response = await network.updateDigitalAsset(networkObj, req.body.digitalAssetFileName, req.body.digitalAssetFileType, req.body.digitalAssetFileBuffer, req.body.emailAddress);
     res.send(response.toString());
 });
 
 //change ownership of an asset
-app.post('/changeOwnershipOfAsset', async (req, res) => {
+router.post('/changeOwnershipOfAsset', async (req, res) => {
     let networkObj = await network.connectToNetwork(req.body.assetModifier);
     let response = await network.changeOwnershipOfAsset(networkObj, req.body.assetId, req.body.assetModifier, req.body.newAssetOwner);
     res.send(response.toString());
 });
 
 //process asset modification request
-app.post('/processAssetModRequest', async (req, res) => {
+router.post('/processAssetModRequest', async (req, res) => {
     let networkObj = await network.connectToNetwork(req.body.emailAddress);
     let response = await network.processAssetModRequest(networkObj, req.body.assetId, req.body.assetModId, req.body.emailAddress, req.body.approve, req.body.addApprovedUser);
     res.send(response.toString());
 });
 
-app.post('/getHistoryForDigitalAsset', async (req, res) => {
+router.post('/getHistoryForDigitalAsset', async (req, res) => {
     let response = await network.getHistoryForDigitalAsset(req.body.assetId);
     res.send(response.toString());
+});
+
+router.get('/health', async (req, res) => {
+    console.log("@ /health");
+    res.json({
+        status: 'UP',
+      });    
 });
 
 app.listen(process.env.PORT || 8081);
