@@ -18,8 +18,6 @@ service:
   type: NodePort
   servicePort: 3000
   nodePort: 30000
-ingress:
-  path: /das
 hpa:
   enabled: false
   minReplicas: 1
