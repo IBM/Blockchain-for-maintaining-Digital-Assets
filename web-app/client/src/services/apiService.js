@@ -76,26 +76,66 @@ export default {
         });
     },
     downloadDigitalAssetFile(assetId, assetName) {
-        let fileData =  Api().post('downloadDigitalAssetFile', {
-             assetId: assetId,
-             assetName: assetName
-        });
-        
-        console.log('barry about to write file');
-        console.log(fileData);
-        const blob = new Blob([fileData], { type: 'application/octet-stream' })
-        const link = document.createElement('a')
-        link.href = URL.createObjectURL(blob)
-        link.download = assetName
-        link.click()
-        URL.revokeObjectURL(link.href)
+        return Api().post('downloadDigitalAssetFile', {
+                assetId: assetId,
+                assetName: assetName
+            }).then(function(response) {
 
-        console.log('barry returning from write file');  
-        //end barry hack
-        //fs.writeFileSync('../client/downloads/' + assetName, buffer);
-    
+                console.log('barry about to write file');
+
+                // console.log(response);
+                return response.data.link;
+                /*console.log(response);
+                // eslint-disable-next-line no-undef
+                let contentType = response.data.ContentType;
+                let data = response.data.Body.data;
+
+
+                const base64Image = Buffer.from(data, 'binary').toString('base64');
+                const decodedImage = new Buffer.from(base64Image, 'base64').toString('utf8');
+
+                const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
+                    const byteCharacters = atob(b64Data);
+                    const byteArrays = [];
+
+                    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                        const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                        const byteNumbers = new Array(slice.length);
+                        for (let i = 0; i < slice.length; i++) {
+                            byteNumbers[i] = slice.charCodeAt(i);
+                        }
+
+                        const byteArray = new Uint8Array(byteNumbers);
+                        byteArrays.push(byteArray);
+                    }
+
+                    const blob = new Blob(byteArrays, { type: contentType });
+                    return blob;
+                };
+
+                const blob = b64toBlob(decodedImage.replace(/^data:image\/(png|gif|jpeg);base64,/, ''), contentType);
+                // const blobUrl = URL.createObjectURL(blob);
+
+                // eslint-disable-next-line no-undef
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+
+                link.download = assetName;
+                link.click();
+                URL.revokeObjectURL(link.href);
+                */
+                console.log('barry returning from write file');
+                //end barry hack
+
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+
     },
-    getHistoryForDigitalAsset(assetId){
+    getHistoryForDigitalAsset(assetId) {
         return Api().post('getHistoryForDigitalAsset', {
             assetId: assetId
         });

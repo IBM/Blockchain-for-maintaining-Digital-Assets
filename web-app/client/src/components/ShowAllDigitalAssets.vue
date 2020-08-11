@@ -119,7 +119,8 @@ export default {
         const apiResponse = await PostsService.downloadDigitalAssetFile(assetId, thisEntry.Record.assetName);
         this.$modal.show('dialog', {
           title: 'Success!',
-          text: 'The asset ' + thisEntry.Record.assetName + ' will be downloaded to the web-app/client/downloads folder.',
+          // text: 'The asset ' + thisEntry.Record.assetName + ' will be downloaded to the web-app/client/downloads folder.',
+          text: 'The asset ' + thisEntry.Record.assetName + ' can be downloaded from <br>' + '<a href="'+apiResponse+'">Download File</a>',
           buttons: [
             {
               title: 'Close',
