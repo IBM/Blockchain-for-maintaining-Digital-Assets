@@ -13,8 +13,8 @@ app.use(morgan('combined'));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
-const host = process.env.Host || 'http://localhost';
-const port = process.env.PORT || 8081;
+const host = process.env.Host || 'http://52.117.161.89';
+const port = process.env.PORT || 30002;
 
 const url = host + ':' + port;
 
