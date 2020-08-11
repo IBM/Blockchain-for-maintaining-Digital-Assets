@@ -145,14 +145,16 @@ app.post('/getHistoryForDigitalAsset', async (req, res) => {
 app.get('/health', async (req, res) => {
     console.log("@ /health");
     res.json({
-        status: 'UP',
+        name: "Digital Asset Server",
+        status: "UP",
       });    
 });
 
 app.get('/', async (req, res) => {
     console.log("@ /");
     res.json({
-        status: 'UP',
+        name: "Digital Asset Server",
+        status: "UP",
       });    
 });
 
