@@ -1,0 +1,9 @@
+{
+    "appAdmin": "app-admin",
+    "appAdminSecret": "app-adminpw",
+    "gatewayDiscovery": { "enabled": true, "asLocalhost": false },
+    "cos_endpoint":  "s3.us-east.cloud-object-storage.appdomain.cloud",
+    "cos_apiKeyId":  "uUjJ_FwNhiMIoaI45YiX4FiXO3YimrOmgwaSTCqsv30r",
+    "cos_serviceInstanceId":  "crn:v1:bluemix:public:cloud-object-storage:global:a/7ecfb7f5a3ae4e77b5a95de5f2f4bd54:fedf6162-8b1b-4674-a14a-c2f2885c83bd::",
+    "cos_bucketName": "digitalasset1" 
+ }
