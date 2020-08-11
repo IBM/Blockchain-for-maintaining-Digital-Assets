@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: digitalasset-server-deployment
+  name: genericasset-server-deployment
   labels:
-    app: digitalasset-server
+    app: genericasset-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: digitalasset-server
+      app: genericasset-server
   template:
     metadata:
       labels:
-        app: digitalasset-server
+        app: genericasset-server
     spec:
       containers:
-      - name: digitalassetserver
-        image: us.icr.io/digitalasset/digitalasset  
+      - name: genericassetserver
+        image: us.icr.io/genericasset/genericasset  
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
@@ -26,7 +26,7 @@ spec:
         - name: config
           mountPath: "/app/server/config/"
       imagePullSecrets:
-      - name: digitalassets-us-icr-io
+      - name: genericasset-us-icr-io
       volumes:
       - name: config
         configMap:
@@ -35,55 +35,67 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: digitalasset-client-deployment
+  name: genericasset-client-deployment
   labels:
-    app: digitalasset-client
+    app: genericasset-client
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: digitalasset-client
+      app: genericasset-client
   template:
     metadata:
       labels:
-        app: digitalasset-client
+        app: genericasset-client
     spec:
       containers:
-      - name: digitalassetclient
-        image: us.icr.io/digitalasset/digitalasset
+      - name: genericassetclient
+        image: us.icr.io/genericasset/genericasset
         imagePullPolicy: Always 
         ports:
         - containerPort: 8080
         command: ["sh"]
         args: ["-c", "cd client && npm i && npm run serve"]
+        volumeMounts:
+        - name: assets
+          mountPath: "/app/client/src/assets"
+        - name: images
+          mountPath: "/app/client/public/images"  
       imagePullSecrets:
-      - name: digitalassets-us-icr-io
+      - name: genericasset-us-icr-io
+      volumes:
+      - name: assets 
+        configMap:
+          name: assets
+      - name: images
+        configMap:
+          name: images  
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: digitalasset-server-service
+  name: genericasset-server-service
 spec:
   selector:
-    app: digitalasset-server
+    app: genericasset-server
   ports:
     - protocol: TCP
       port: 8081
-      nodePort: 30002
+      nodePort: 30006
       targetPort: 8081
   type: NodePort  
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: digitalasset-client-service
+  name: genericasset-client-service
 spec:
   selector:
-    app:  digitalasset-client
+    app:  genericasset-client
   ports:
     - protocol: TCP
       port: 8080
-      nodePort: 30001
+      nodePort: 30005
       targetPort: 8080
   type: NodePort      
 
