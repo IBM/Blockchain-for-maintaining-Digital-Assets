@@ -14,7 +14,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
 const host = process.env.Host || 'http://52.117.161.89';
-const port = process.env.PORT || 30002;
+const port = process.env.PORT || 30006;
 
 const url = host + ':' + port;
 
