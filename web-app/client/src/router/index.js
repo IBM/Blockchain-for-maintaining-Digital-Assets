@@ -8,7 +8,7 @@ import ViewAssetModificationRequests from '@/components/ViewAssetModificationReq
 import UpdateAsset from '@/components/UpdateAsset';
 import ChangeOwnershipOfAsset from '@/components/ChangeOwnershipOfAsset';
 import GetHistoryForDigitalAsset from '@/components/GetHistoryForDigitalAsset';
-
+import Health from '@/components/Health';
 Vue.use(Router);
 
 export default new Router({
@@ -53,6 +53,11 @@ export default new Router({
             name: 'GetHistoryForDigitalAsset',
             component: GetHistoryForDigitalAsset,
             props: true
+        },
+        {
+            path: '/health',
+            name: 'Health',
+            component: Health
         }
     ]
 });
