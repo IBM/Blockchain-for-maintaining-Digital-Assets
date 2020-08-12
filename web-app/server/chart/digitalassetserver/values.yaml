@@ -13,6 +13,8 @@ image:
 livenessProbe:
   initialDelaySeconds: 30
   periodSeconds: 10
+ingress:
+  host: localhost
 service:
   name: node
   type: NodePort
