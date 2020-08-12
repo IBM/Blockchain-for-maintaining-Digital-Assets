@@ -171,4 +171,21 @@ app.post('/getHistoryForDigitalAsset', async(req, res) => {
     res.send(response.toString());
 });
 
+app.get('/health', async (req, res) => {
+    console.log("@ /health");
+    res.json({
+        name: "Digital Asset Server",
+        status: "UP",
+      });    
+});
+
+app.get('/', async (req, res) => {
+    console.log("@ /");
+    res.json({
+        name: "Digital Asset Server",
+        status: "UP",
+      });    
+});
+
 app.listen(process.env.PORT || 8081);
+
