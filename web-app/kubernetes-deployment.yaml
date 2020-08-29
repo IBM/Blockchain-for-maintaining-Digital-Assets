@@ -51,7 +51,12 @@ spec:
       containers:
       - name: genericassetclient
         image: us.icr.io/genericasset/genericasset
-        imagePullPolicy: Always 
+        imagePullPolicy: Always
+        env:
+        - name: VUE_APP_API_PORT
+          value: "30004"
+        - name: VUE_APP_API_HOST
+          value: "52.117.161.89"
         ports:
         - containerPort: 8080
         command: ["sh"]
