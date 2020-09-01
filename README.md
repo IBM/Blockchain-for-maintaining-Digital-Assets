@@ -519,7 +519,43 @@ Main page of application:
 
 You can have a look at the [Introduction and Demo video](#watch-the-video---introduction-and-demo) for examples of actions that can be taken within the application.
 
+# Containerize the Application
 
+Here are instructions for containerizing the application.  The advantage to containerizing is all of the benefits one gets with kubernetes, to include standing up the front end (client) and backend (server) on a public ip address so anyone can access. 
+
+Here are the steps.
+
+#### Build, tag, and push the image to a container registry:
+  ```
+     docker build -f ./Dockerfile -t commpaper .
+     docker tag commpaper us.icr.io/commpaper/commpaper
+     docker push us.icr.io/commpaper/commpaper
+  ```
+  
+#### Ensure you have setup the kubernetes onfigmaps for your server
+  ``` 
+      cd Blockchain-for-maintaining-digital-assets/web-app/server/config
+      kubectl delete configmap configuration
+      kubectl create configmap configuration --from-file=./config.json --from-file=./ connection_profile.json   
+  ```    
+  
+#### Ensure you have setup the kubernetes configmaps for your client
+  ``` 
+      cd Blockchain-for-maintaining-digital-assets/web-app
+      kubectl delete configmap images
+      kubectl delete configmap assets
+      kubectl create configmap assets --from-file=./client/src/assets/logo.png
+      kubectl create configmap images --from-file=./client/public/images/favicon.ico   
+  ```  
+  
+#### Deploy your application to kubernetes
+  ``` 
+  	   cd Blockchain-for-maintaining-digital-assets/web-app
+       kubectl delete -f Kubernetes-deployment.yaml
+       kubectl apply -f kubernetes-deployment.yaml
+  ```  
+  `Note: Make sure and edit the kubernetes-deployment.yaml file with the correct information.`
+	
 # Troubleshooting
 
 If you get an error that says `Error: Calling register endpoint failed with error [Error: self signed certificate]`, you can get past this by adding `"httpOptions": {"verify": false}` to the certificateAuthorities section of the connection profile that was downloaded from IBM Blockchain Platform.
