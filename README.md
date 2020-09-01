@@ -550,7 +550,7 @@ Here are the steps.
   
 #### Deploy your application to kubernetes
   ``` 
-  	   cd Blockchain-for-maintaining-digital-assets/web-app
+       cd Blockchain-for-maintaining-digital-assets/web-app
        kubectl delete -f Kubernetes-deployment.yaml
        kubectl apply -f kubernetes-deployment.yaml
   ```  
