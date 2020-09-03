@@ -66,6 +66,7 @@ class DigitalAssetContract extends Contract {
      * @returns - nothing - but creates a DigitalAsset object and updates the world state with the DigitalAsset.
      */
     async createDigitalAsset(ctx, assetId, assetName, assetHash, createdBy) {
+        console.info("Enter: createDigitalAsset");
         let response = {};
         let existingAssets = await this.queryDigitalAssetByHash(ctx, assetHash);
         if (existingAssets.length !== 0) {
@@ -105,6 +106,7 @@ class DigitalAssetContract extends Contract {
      * @returns - nothing - but creates a User object and updates the world state with the User.
      */
     async createUser(ctx, emailAddress, firstName, lastName) {
+        console.info("Enter: createUser");
         let exists = await this.userExists(ctx, emailAddress);
         let response = {};
         if (exists) {
@@ -138,6 +140,7 @@ class DigitalAssetContract extends Contract {
      * @returns - the asset in JSON object form, if it exists, otherwise it throws an error
      */
     async readDigitalAsset(ctx, assetId) {
+        console.log("Enter: readDigialAsset");
         let response = {};
         let exists = await this.digitalAssetExists(ctx, assetId);
         if (!exists) {
@@ -164,6 +167,7 @@ class DigitalAssetContract extends Contract {
      * @returns - nothing - but updates the world state with the DigitalAsset.
      */
     async updateDigitalAsset(ctx, assetId, assetHash, lastModifiedBy) {
+        console.info("Enter: updateDigialAsset");
         let readResponse = await this.readDigitalAsset(ctx, assetId);
         let digitalAsset = readResponse.data;
         digitalAsset.assetHash = assetHash;
@@ -197,6 +201,7 @@ class DigitalAssetContract extends Contract {
      * @returns - nothing - but updates the DigitalAsset in the world state.
      */
     async addApprovedModifierToDigitalAsset(ctx, assetId, newApprovedModifier) {
+        console.info("Enter: addApprovedModifierToDigitalAsset");
         let readResponse = await this.readDigitalAsset(ctx, assetId);
         let digitalAsset = readResponse.data;
         if(!digitalAsset.approvedUsers){
@@ -236,6 +241,7 @@ class DigitalAssetContract extends Contract {
      * @returns - nothing - but updates the DigitalAsset in the world state.
      */
     async addPendingModificationToDigitalAsset(ctx, assetId, modFileName, modFileHash, lastModifiedBy) {
+        console.info("Enter: addPendingModificationToDigitalAsset");
         let readResponse = await this.readDigitalAsset(ctx, assetId);
         let digitalAsset = readResponse.data;
         if(!digitalAsset.modificationsPendingApproval){
@@ -272,6 +278,7 @@ class DigitalAssetContract extends Contract {
      * @returns - nothing - but marks the Digital Asset as "deleted" in the world state if the asset exists and the assetDeleter is the same as the assetOwner, else throws an error.
      */
     async deleteDigitalAsset(ctx, assetId, assetDeleter) {
+        console.info("Enter: deleteDigitalAsset");
         let response = {};
         let readResponse = await this.readDigitalAsset(ctx, assetId);
         let digitalAsset = readResponse.data;
@@ -307,6 +314,7 @@ class DigitalAssetContract extends Contract {
      * @returns - nothing - but updates the world state with the DigitalAsset.
      */
     async changeOwnershipOfAsset(ctx, assetId, assetModifier, newAssetOwner) {
+        console.info("Enter: changeOwnershipOfAsset");
         let readResponse = await this.readDigitalAsset(ctx, assetId);
         let digitalAsset = readResponse.data;
         let response = {};
@@ -345,6 +353,7 @@ class DigitalAssetContract extends Contract {
      * @returns - the modificationPendingApproval entry if it exists, else return error.
      */
     async getModificationPendingApprovalFromAsset(ctx, assetId, modFileName) {
+        console.info("Enter: getModificationPendingApproval");
         let response = {};
         let mod = null;
         let readResponse = await this.readDigitalAsset(ctx, assetId);
@@ -369,8 +378,8 @@ class DigitalAssetContract extends Contract {
      * @param {String} modFileName the identifier for the modificationPendingApproval to be removed
      * @returns - deletes the modificationPendingApproval entry and updates the asset in the world state
      */
-    async deleteModificationPendingApprovalFromAsset(ctx, assetId, modFileName) {
-
+    async deleteModificationPendingApprovalFromAsset(ctx, assetId, modFileName) {        
+        console.info("Enter: deleteModificationPendingApprovalFromAsset");
         let response = {};
         let readResponse = await this.readDigitalAsset(ctx, assetId);
         let digitalAsset = readResponse.data;
@@ -411,7 +420,7 @@ class DigitalAssetContract extends Contract {
      * @returns - all key value pairs representing digital assets in the world state
      */
     async queryAllDigitalAssets(ctx) {
-
+        console.info("Enter: queryAllDigitalAssets");
         let response = {};
 
         let queryString = {
@@ -436,7 +445,7 @@ class DigitalAssetContract extends Contract {
      * @returns - the asset which has the assetHash. Else null.
      */
     async queryDigitalAssetByHash(ctx, assetHash) {
-
+        console.info("Enter: createDigialAssetByHash");
         let response = null;
 
         let queryString = {
@@ -461,7 +470,7 @@ class DigitalAssetContract extends Contract {
      * @returns - all key value pairs representing digital assets in the world state that have assetOwner = emailAddress
      */
     async queryDigitalAssetsByUser(ctx, emailAddress) {
-
+        console.info("Enter: queryDigitalAssetByUser");
         let response = null;
 
         let queryString = {
@@ -487,7 +496,7 @@ class DigitalAssetContract extends Contract {
      * @returns - all modificationPendingApproval entries for all digital assets that have assetOwner = emailAddress
      */
     async queryAllPendingModificationRequests(ctx, emailAddress) {
-
+        console.info("Enter: queryAllPendingModificationRequests");
         let response = [];
         let queryResults = await this.queryDigitalAssetsByUser(ctx, emailAddress);
 
@@ -511,7 +520,7 @@ class DigitalAssetContract extends Contract {
      * @returns - the result of the query string
     */
     async queryWithQueryString(ctx, queryString) {
-
+        console.info("Enter: queryWithQueryString");
         let resultsIterator = await ctx.stub.getQueryResult(queryString);
 
         let allResults = [];
@@ -553,6 +562,7 @@ class DigitalAssetContract extends Contract {
      * @returns - the entire hisgtroy of the given asset identified by assetId.
     */
     async getHistoryForDigitalAsset(ctx, assetId) {
+        console.info("Enter: getHistoryForDigitalAsset");
         console.info('- start getHistoryForDigitalAsset: %s\n', assetId);
 
         let resultsIterator = await ctx.stub.getHistoryForKey(assetId);
