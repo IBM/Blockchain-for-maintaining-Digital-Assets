@@ -54,7 +54,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: VUE_APP_API_PORT
-          value: "30004"
+          value: "30006"
         - name: VUE_APP_API_HOST
           value: "52.117.161.89"
         ports:
