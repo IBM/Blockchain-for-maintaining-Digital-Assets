@@ -1,0 +1,41 @@
+{
+    "name": "Org6MSPprofile",
+    "description": "Network on IBP v2",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Org6MSP"
+    },
+    "organizations": {
+        "Org6MSP": {
+            "mspid": "Org6MSP",
+            "certificateAuthorities": [
+                "multicloud3-org6ca-ca.multicloud3roles-1abd866a65a6a73350903823fc77cd5f-0000.us-south.containers.appdomain.cloud:443"
+            ],
+            "peers": [
+                "multicloud3-org6peer-peer.multicloud3roles-1abd866a65a6a73350903823fc77cd5f-0000.us-south.containers.appdomain.cloud:443"
+            ]
+        }
+    },
+    "peers": {
+        "multicloud3-org6peer-peer.multicloud3roles-1abd866a65a6a73350903823fc77cd5f-0000.us-south.containers.appdomain.cloud:443": {
+            "url": "grpcs://multicloud3-org6peer-peer.multicloud3roles-1abd866a65a6a73350903823fc77cd5f-0000.us-south.containers.appdomain.cloud:443",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIIB/TCCAaSgAwIBAgIUDpB19qskaaRC4yhhq25KnHpNsaUwCgYIKoZIzj0EAwIw\nXTELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMQ4wDAYDVQQDEwV0bHNjYTAe\nFw0yMDA4MjYxODQ1MDBaFw0zNTA4MjMxODQ1MDBaMF0xCzAJBgNVBAYTAlVTMRcw\nFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEUMBIGA1UEChMLSHlwZXJsZWRnZXIxDzAN\nBgNVBAsTBkZhYnJpYzEOMAwGA1UEAxMFdGxzY2EwWTATBgcqhkjOPQIBBggqhkjO\nPQMBBwNCAATq14PZoY9TKEXFN2h00WkRXqCc/TeL1XjvFyxAGzaWJpQaq0fBwR6O\nwLF1VSFDE/JX9y2QaXxarNqP7zMtorXNo0IwQDAOBgNVHQ8BAf8EBAMCAQYwDwYD\nVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUfZobbJXfEJB6vt7EEL+lYjQgcQ0wCgYI\nKoZIzj0EAwIDRwAwRAIgIiTC400s22Tgf09Ht2HdAodVtlRRzUd5uyB26SRr4bQC\nIC/6Kr/nHcrkO52sZtBZJlgZnl8iOCp8T4ucefCETXxg\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "multicloud3-org6peer-peer.multicloud3roles-1abd866a65a6a73350903823fc77cd5f-0000.us-south.containers.appdomain.cloud"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "multicloud3-org6ca-ca.multicloud3roles-1abd866a65a6a73350903823fc77cd5f-0000.us-south.containers.appdomain.cloud:443": {
+            "url": "https://multicloud3-org6ca-ca.multicloud3roles-1abd866a65a6a73350903823fc77cd5f-0000.us-south.containers.appdomain.cloud:443",
+            "caName": "ca",
+            "tlsCACerts": {
+                "pem": [
+                    "-----BEGIN CERTIFICATE-----\nMIIDqTCCA0+gAwIBAgIRAITypl/+Rd622yT3uNOUPtowCgYIKoZIzj0EAwIwgdUx\nCzAJBgNVBAYTAlVTMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEPMA0GA1UEBxMG\nRHVyaGFtMQwwCgYDVQQKEwNJQk0xEzARBgNVBAsTCkJsb2NrY2hhaW4xeTB3BgNV\nBAMTcG11bHRpY2xvdWQzLW9yZzZjYS1jYS5tdWx0aWNsb3VkM3JvbGVzLTFhYmQ4\nNjZhNjVhNmE3MzM1MDkwMzgyM2ZjNzdjZDVmLTAwMDAudXMtc291dGguY29udGFp\nbmVycy5hcHBkb21haW4uY2xvdWQwHhcNMjAwODI2MTg0OTQ4WhcNMzAwODI0MTg0\nOTQ4WjCB1TELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMQ8w\nDQYDVQQHEwZEdXJoYW0xDDAKBgNVBAoTA0lCTTETMBEGA1UECxMKQmxvY2tjaGFp\nbjF5MHcGA1UEAxNwbXVsdGljbG91ZDMtb3JnNmNhLWNhLm11bHRpY2xvdWQzcm9s\nZXMtMWFiZDg2NmE2NWE2YTczMzUwOTAzODIzZmM3N2NkNWYtMDAwMC51cy1zb3V0\naC5jb250YWluZXJzLmFwcGRvbWFpbi5jbG91ZDBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABBYW8ZqEKwC/KiYnnVE9Yz1rY5gzGRoskEnwwmPal9W/V6mCoxTaSZGO\neC65buM2qY+EkdkueIo3zTemIBV0mnmjgf0wgfowgfcGA1UdEQSB7zCB7IJwbXVs\ndGljbG91ZDMtb3JnNmNhLWNhLm11bHRpY2xvdWQzcm9sZXMtMWFiZDg2NmE2NWE2\nYTczMzUwOTAzODIzZmM3N2NkNWYtMDAwMC51cy1zb3V0aC5jb250YWluZXJzLmFw\ncGRvbWFpbi5jbG91ZIJ4bXVsdGljbG91ZDMtb3JnNmNhLW9wZXJhdGlvbnMubXVs\ndGljbG91ZDNyb2xlcy0xYWJkODY2YTY1YTZhNzMzNTA5MDM4MjNmYzc3Y2Q1Zi0w\nMDAwLnVzLXNvdXRoLmNvbnRhaW5lcnMuYXBwZG9tYWluLmNsb3VkMAoGCCqGSM49\nBAMCA0gAMEUCIQCN8jlS+n4wMLdIpekOn1f7IHTNKtdOn9X0gzGxt9PR9wIgLFBM\n05moU0gyqn4FAQp6h+iBV8/7NYs1ZbnZ+W/s6HM=\n-----END CERTIFICATE-----\n"
+                ]
+            }
+        }
+    }
+}

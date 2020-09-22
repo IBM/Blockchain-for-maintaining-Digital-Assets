@@ -6,7 +6,7 @@
 
 In this code pattern, we will be building a digital asset management application by creating and deploying a smart contract on a Hyperledger Fabric Network created on IBM Blockchain Platform. We will then interact with this application via a user interface created using VueJS.
 
-Digital Asset Management Systems ensure that operations are only performed on a digital asset by individuals (or organizations) that have the right access rights and permissions for the asset. The digital asset is defined as the content (an image, a music file, a document, a video file, etc.) and its metadata. The metadata could be as simple as the name of the asset, the name of the owner of the asset and the date of creation of the asset, or it could be something more complex, such as extracted speech from a video (subtitles). In any Digital Asset Management system, there can be any number of users and these users can have the ability to perform various actions on the asset in the system based on the permissions they have. Examples of such actions that are being covered in this developer pattern are:
+Digital Asset Management Systems ensure that operations are only performed on a digital asset by individuals (or organizations) that have the right access rights and permissions for the asset. The digital asset is defined as the content (an image, a music file, a document, a video file, etc.) and its metadata. The metadata could be as simple as the name of the asset, the name of the owner of the asset and the date of creation of the asset, or it could be something more complex, such as extracted speech from a video (subtitles). In any Digital Asset Management system, there can be any number of users and these users can have the ability to perform various actions on the asset in the system based on the permissions they have. Examples of such actions that are being covered in this developer pattern are: 
 
 1. User registration and user login.
 2. Viewing all existing assets in the system.
@@ -519,7 +519,43 @@ Main page of application:
 
 You can have a look at the [Introduction and Demo video](#watch-the-video---introduction-and-demo) for examples of actions that can be taken within the application.
 
+# Containerize the Application
 
+Here are instructions for containerizing the application.  The advantage to containerizing is all of the benefits one gets with kubernetes, to include standing up the front end (client) and backend (server) on a public ip address so anyone can access. 
+
+Here are the steps.
+
+#### Build, tag, and push the image to a container registry:
+  ```
+     docker build -f ./Dockerfile -t commpaper .
+     docker tag commpaper us.icr.io/commpaper/commpaper
+     docker push us.icr.io/commpaper/commpaper
+  ```
+  
+#### Ensure you have setup the kubernetes onfigmaps for your server
+  ``` 
+      cd Blockchain-for-maintaining-digital-assets/web-app/server/config
+      kubectl delete configmap configuration
+      kubectl create configmap configuration --from-file=./config.json --from-file=./ connection_profile.json   
+  ```    
+  
+#### Ensure you have setup the kubernetes configmaps for your client
+  ``` 
+      cd Blockchain-for-maintaining-digital-assets/web-app
+      kubectl delete configmap images
+      kubectl delete configmap assets
+      kubectl create configmap assets --from-file=./client/src/assets/logo.png
+      kubectl create configmap images --from-file=./client/public/images/favicon.ico   
+  ```  
+  
+#### Deploy your application to kubernetes
+  ``` 
+       cd Blockchain-for-maintaining-digital-assets/web-app
+       kubectl delete -f Kubernetes-deployment.yaml
+       kubectl apply -f kubernetes-deployment.yaml
+  ```  
+  `Note: Make sure and edit the kubernetes-deployment.yaml file with the correct information.`
+	
 # Troubleshooting
 
 If you get an error that says `Error: Calling register endpoint failed with error [Error: self signed certificate]`, you can get past this by adding `"httpOptions": {"verify": false}` to the certificateAuthorities section of the connection profile that was downloaded from IBM Blockchain Platform.
@@ -552,4 +588,4 @@ This application can be extended by:
 # License
 This code pattern is licensed under the Apache Software License, Version 2. Separate third-party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN) 

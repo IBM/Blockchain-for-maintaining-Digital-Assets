@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: genericasset-server-deployment
+  labels:
+    app: genericasset-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: genericasset-server
+  template:
+    metadata:
+      labels:
+        app: genericasset-server
+    spec:
+      containers:
+      - name: genericassetserver
+        image: us.icr.io/genericasset/genericasset  
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        command: ["sh"]
+        args: ["-c", "cd server && npm i && node enrollAdmin.js && npm start"]
+        volumeMounts:
+        - name: config
+          mountPath: "/app/server/config/"
+      imagePullSecrets:
+      - name: genericasset-us-icr-io
+      volumes:
+      - name: config
+        configMap:
+          name: configuration
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: genericasset-client-deployment
+  labels:
+    app: genericasset-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: genericasset-client
+  template:
+    metadata:
+      labels:
+        app: genericasset-client
+    spec:
+      containers:
+      - name: genericassetclient
+        image: us.icr.io/genericasset/genericasset
+        imagePullPolicy: Always
+        env:
+        - name: VUE_APP_API_PORT
+          value: "30006"
+        - name: VUE_APP_API_HOST
+          value: "52.117.161.89"
+        ports:
+        - containerPort: 8080
+        command: ["sh"]
+        args: ["-c", "cd client && npm i && npm run serve"]
+        volumeMounts:
+        - name: assets
+          mountPath: "/app/client/src/assets"
+        - name: images
+          mountPath: "/app/client/public/images"  
+      imagePullSecrets:
+      - name: genericasset-us-icr-io
+      volumes:
+      - name: assets 
+        configMap:
+          name: assets
+      - name: images
+        configMap:
+          name: images  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: genericasset-server-service
+spec:
+  selector:
+    app: genericasset-server
+  ports:
+    - protocol: TCP
+      port: 8081
+      nodePort: 30006
+      targetPort: 8081
+  type: NodePort  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: genericasset-client-service
+spec:
+  selector:
+    app:  genericasset-client
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30005
+      targetPort: 8080
+  type: NodePort      
+

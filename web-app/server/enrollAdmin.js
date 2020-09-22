@@ -11,6 +11,7 @@ const path = require('path');
 
 // capture network variables from config.json
 const configDirectory = path.join(process.cwd(), 'config');
+const walletDirectory = path.join(process.cwd(), '_idwallet');
 const configPath = path.join(configDirectory, 'config.json');
 const configJSON = fs.readFileSync(configPath, 'utf8');
 const config = JSON.parse(configJSON);
@@ -38,7 +39,7 @@ async function main() {
         const ca = new FabricCAServices(caURL);
 
         // Create a new file system based wallet for managing identities.
-        const walletPath = path.join(configDirectory, '_idwallet');
+        const walletPath = path.join(walletDirectory);
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
